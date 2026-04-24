@@ -14,7 +14,7 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-# 🔥 Force Node.js 24 (fix deprecation warning)
+# 🔥 Force Node 24 (already correct)
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
