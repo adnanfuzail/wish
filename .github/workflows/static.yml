@@ -14,7 +14,7 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-# 🔥 Fix for Node.js 24 migration
+# 🔥 Force Node.js 24 (fix deprecation warning)
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
