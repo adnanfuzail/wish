@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Festival Countdown India — History, Greetings, Cards & Custom Links for Diwali, Holi, Eid, Christmas and 50+ festivals"/>
+<meta name="keywords" content="diwali history,holi history,eid history,christmas history,festival greetings india,festival countdown"/>
+<title>🎉 FestivCount — Festival History, Greetings & Cards</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07070f;--bg2:#0e0e1e;--surface:rgba(255,255,255,0.05);--surface-solid:#141428;
+  --border:rgba(255,255,255,0.09);--text:#eeeeff;--muted:rgba(238,238,255,0.42);
+  --accent:#ff5f57;--accent-b:#ff8c42;--glow:rgba(255,95,87,0.28);
+  --select-bg:#1a1a35;--select-text:#eeeeff;--blur:blur(20px);--ad-bg:rgba(255,255,255,0.03);
+  --prose:#d0d0ee;
+}
+body.vibrant{--bg:#0b0020;--bg2:#110033;--surface-solid:#160028;--accent:#bf5fff;--accent-b:#ff5faa;--glow:rgba(191,95,255,0.3);--select-bg:#1a0035;--select-text:#eeeeff}
+body.minimal{--bg:#f4f2ee;--bg2:#fff;--surface:rgba(0,0,0,0.04);--surface-solid:#f0ede8;--border:rgba(0,0,0,0.09);--text:#1c1c1c;--muted:rgba(0,0,0,0.4);--accent:#e63946;--accent-b:#f4a261;--glow:rgba(230,57,70,0.18);--select-bg:#e8e4df;--select-text:#1c1c1c;--ad-bg:rgba(0,0,0,0.04);--prose:#333}
+body.golden{--bg:#090700;--bg2:#100d00;--surface-solid:#120f01;--surface:rgba(245,197,24,0.05);--border:rgba(245,197,24,0.12);--accent:#f5c518;--accent-b:#ff9d00;--glow:rgba(245,197,24,0.35);--select-bg:#1a1400;--select-text:#f5c518;--prose:#e0d090}
+body.ocean{--bg:#020c1b;--bg2:#0a1628;--surface-solid:#0c1e35;--surface:rgba(56,189,248,0.05);--border:rgba(56,189,248,0.1);--accent:#38bdf8;--accent-b:#34d399;--glow:rgba(56,189,248,0.28);--select-bg:#071525;--select-text:#38bdf8;--prose:#b0d8f0}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;overflow-x:hidden;transition:background 0.6s,color 0.3s}
+#bgCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+#festBg{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity 1.5s ease}
+.page{position:relative;z-index:2;display:flex;flex-direction:column;min-height:100vh}
+
+/* NAV TABS */
+.main-nav{display:flex;gap:0;background:var(--surface-solid);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none}
+.main-nav::-webkit-scrollbar{display:none}
+.nav-tab{padding:12px 22px;font-size:0.82rem;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all 0.2s;background:none;border-top:none;border-left:none;border-right:none;font-family:'Plus Jakarta Sans',sans-serif}
+.nav-tab.active,.nav-tab:hover{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* AD */
+.ad-top{width:100%;background:var(--ad-bg);border-bottom:1px solid var(--border);display:flex;justify-content:center;align-items:center;padding:8px 16px;min-height:70px}
+.ad-label{font-size:0.62rem;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:3px}
+.ad-slot{width:100%;display:flex;flex-direction:column;align-items:center}
+
+/* HEADER */
+.top-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:var(--surface);border-bottom:1px solid var(--border);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);position:sticky;top:0;z-index:100}
+.brand{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent-b));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.custom-select{position:relative;display:inline-block}
+.custom-select select{appearance:none;-webkit-appearance:none;padding:8px 34px 8px 12px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface-solid);color:var(--select-text);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.82rem;font-weight:500;cursor:pointer;outline:none;transition:border-color 0.2s,box-shadow 0.2s;min-width:110px}
+.custom-select select option{background:var(--surface-solid);color:var(--select-text);padding:8px}
+.custom-select select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow)}
+.custom-select select:hover{border-color:var(--accent)}
+.custom-select::after{content:"▾";position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:0.8rem;pointer-events:none}
+
+/* LAYOUT */
+.content-grid{flex:1;display:grid;grid-template-columns:1fr 300px;gap:0;max-width:1200px;margin:0 auto;width:100%;padding:40px 24px;align-items:start}
+.main-col{display:flex;flex-direction:column;gap:36px;padding-right:32px}
+.sidebar{display:flex;flex-direction:column;gap:20px;position:sticky;top:86px}
+
+/* PAGE SECTIONS */
+.section-page{display:none}
+.section-page.active{display:block}
+
+/* HERO */
+.hero{text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px;animation:fadeUp 0.7s ease both}
+.festival-badge{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:50px;padding:6px 18px;font-size:0.78rem;font-weight:500;letter-spacing:0.08em;color:var(--muted);backdrop-filter:var(--blur)}
+.clock{font-size:0.85rem;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)}
+.greeting{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,7vw,5.2rem);font-weight:800;line-height:1.05;letter-spacing:-0.02em;background:linear-gradient(135deg,var(--text) 0%,var(--accent-b) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sub-greeting{font-size:0.95rem;color:var(--muted);max-width:420px;line-height:1.6;text-align:center}
+.countdown-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;width:100%;max-width:480px;animation:fadeUp 0.7s 0.12s ease both}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px 8px 14px;backdrop-filter:var(--blur);display:flex;flex-direction:column;align-items:center;gap:5px;transition:transform 0.25s,border-color 0.25s,box-shadow 0.25s;cursor:default}
+.card:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 10px 36px var(--glow)}
+.card span{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;color:var(--accent);line-height:1}
+.card p{font-size:0.6rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted)}
+.next-festival{font-size:0.85rem;color:var(--muted);letter-spacing:0.04em}
+
+/* MESSAGE CARD */
+.message-card{background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:22px;backdrop-filter:var(--blur);display:flex;flex-direction:column;gap:13px;box-shadow:0 20px 60px rgba(0,0,0,0.25);animation:fadeUp 0.7s 0.38s ease both}
+.msg-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.msg-title{font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
+.msg-templates{display:flex;gap:6px;flex-wrap:wrap}
+.tpl-btn{padding:4px 12px;border-radius:50px;border:1.5px solid var(--border);background:transparent;color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.72rem;font-weight:500;cursor:pointer;transition:all 0.2s}
+.tpl-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--glow)}
+.name-row{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;border:1.5px solid var(--border);background:rgba(0,0,0,0.15);transition:border-color 0.2s,box-shadow 0.2s}
+.name-row:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow)}
+.name-icon{font-size:1rem;user-select:none}
+.name-row input{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;font-weight:500}
+.name-row input::placeholder{color:var(--muted);font-weight:400}
+textarea#customMsg{width:100%;min-height:110px;padding:14px;border-radius:14px;border:1.5px solid var(--border);background:rgba(0,0,0,0.15);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;line-height:1.6;resize:vertical;outline:none;transition:border-color 0.2s,box-shadow 0.2s}
+textarea#customMsg::placeholder{color:var(--muted)}
+textarea#customMsg:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow)}
+.char-count{font-size:0.7rem;color:var(--muted);text-align:right;margin-top:-8px}
+.share-main{width:100%;padding:13px;border-radius:14px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent-b));color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.92rem;font-weight:700;letter-spacing:0.03em;cursor:pointer;box-shadow:0 6px 24px var(--glow);transition:transform 0.15s,opacity 0.2s,box-shadow 0.2s}
+.share-main:hover{opacity:0.9;transform:translateY(-2px);box-shadow:0 10px 32px var(--glow)}
+.share-main:active{transform:translateY(0)}
+.share-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.share-buttons button{padding:9px 4px;border-radius:10px;border:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.75rem;font-weight:600;cursor:pointer;color:#fff;transition:transform 0.15s,opacity 0.2s}
+.share-buttons button:hover{opacity:0.88;transform:translateY(-2px)}
+.wa{background:#25D366}.fb{background:#1877F2}.tw{background:#1DA1F2}
+.cp{background:var(--surface-solid)!important;border:1.5px solid var(--border)!important;color:var(--text)!important}
+
+/* FESTIVAL LIST */
+.festivals-section{animation:fadeUp 0.7s 0.25s ease both}
+.section-title{font-family:'Syne',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.filter-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tab{padding:5px 14px;border-radius:50px;border:1.5px solid var(--border);background:var(--surface);color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.75rem;font-weight:500;cursor:pointer;transition:all 0.2s}
+.tab.active,.tab:hover{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 4px 14px var(--glow)}
+.festival-list{display:flex;flex-direction:column;gap:8px;max-height:300px;overflow-y:auto;padding-right:4px}
+.festival-list::-webkit-scrollbar{width:4px}
+.festival-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.fest-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-radius:12px;background:var(--surface);border:1.5px solid var(--border);cursor:pointer;transition:border-color 0.2s,background 0.2s,transform 0.15s}
+.fest-item:hover{border-color:var(--accent);background:var(--glow);transform:translateX(4px)}
+.fest-item.today{border-color:var(--accent);background:linear-gradient(135deg,var(--glow),transparent)}
+.fest-left{display:flex;align-items:center;gap:10px}
+.fest-emoji{font-size:1.2rem}
+.fest-name{font-size:0.88rem;font-weight:500}
+.fest-cat{font-size:0.65rem;color:var(--muted);letter-spacing:0.08em}
+.fest-date{font-size:0.75rem;color:var(--muted);font-weight:500;white-space:nowrap}
+.fest-today-tag{font-size:0.6rem;background:var(--accent);color:#fff;padding:2px 8px;border-radius:50px;font-weight:600}
+.fest-read-btn{font-size:0.65rem;color:var(--accent);border:1px solid var(--accent);border-radius:50px;padding:2px 8px;cursor:pointer;background:none;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;white-space:nowrap;transition:all 0.2s}
+.fest-read-btn:hover{background:var(--accent);color:#fff}
+
+/* ══════════════════════ HISTORY ARTICLES ══════════════════════ */
+.history-page{padding:0}
+.history-search{display:flex;gap:10px;margin-bottom:28px;align-items:center}
+.history-search input{flex:1;padding:12px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--surface-solid);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.2s,box-shadow 0.2s}
+.history-search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow)}
+.history-search input::placeholder{color:var(--muted)}
+.article-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.article-card{background:var(--surface);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;cursor:pointer;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s}
+.article-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 12px 40px var(--glow)}
+.article-banner{height:120px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative;overflow:hidden}
+.article-body{padding:16px}
+.article-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;margin-bottom:6px;line-height:1.3}
+.article-meta{font-size:0.7rem;color:var(--muted);letter-spacing:0.08em;margin-bottom:8px;display:flex;gap:10px;align-items:center}
+.article-preview{font-size:0.82rem;color:var(--muted);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.article-tag{font-size:0.62rem;background:var(--accent);color:#fff;padding:2px 8px;border-radius:50px;font-weight:600}
+
+/* ARTICLE MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:1000;display:flex;align-items:flex-start;justify-content:center;padding:30px 16px;opacity:0;pointer-events:none;transition:opacity 0.3s;overflow-y:auto}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-box{background:var(--bg2);border:1.5px solid var(--border);border-radius:24px;max-width:760px;width:100%;padding:0;overflow:hidden;transform:translateY(30px);transition:transform 0.4s cubic-bezier(0.34,1.2,0.64,1);position:relative}
+.modal-overlay.open .modal-box{transform:translateY(0)}
+.modal-hero{height:200px;display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;overflow:hidden}
+.modal-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,0.5);border:1.5px solid var(--border);color:var(--text);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;z-index:10}
+.modal-close:hover{background:var(--accent)}
+.modal-content{padding:28px 32px 36px}
+.modal-title{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;line-height:1.1;margin-bottom:8px;background:linear-gradient(135deg,var(--text),var(--accent-b));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.modal-meta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;font-size:0.75rem;color:var(--muted)}
+.modal-meta span{display:flex;align-items:center;gap:4px}
+.article-prose{font-size:0.95rem;line-height:1.85;color:var(--prose)}
+.article-prose h2{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:var(--text);margin:28px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.article-prose h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--accent);margin:20px 0 8px}
+.article-prose p{margin-bottom:16px}
+.article-prose ul{margin:12px 0 16px 20px}
+.article-prose li{margin-bottom:6px}
+.article-prose strong{color:var(--text)}
+.article-prose .highlight-box{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:16px 20px;margin:20px 0;border-left:4px solid var(--accent)}
+.modal-ad{margin:24px 0;background:var(--ad-bg);border:1px solid var(--border);border-radius:12px;padding:10px;min-height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+
+/* ══════════════════════ GREETING CARDS ══════════════════════ */
+.cards-page{}
+.cards-intro{font-size:0.9rem;color:var(--muted);margin-bottom:24px;line-height:1.6}
+.cards-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.greeting-card{border-radius:16px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all 0.2s;position:relative}
+.greeting-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.4)}
+.gc-canvas{display:block;width:100%;height:180px}
+.gc-footer{padding:10px 12px;background:var(--surface-solid);display:flex;align-items:center;justify-content:space-between}
+.gc-name{font-size:0.8rem;font-weight:600}
+.gc-dl{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:5px 12px;font-size:0.72rem;font-weight:700;cursor:pointer;transition:opacity 0.2s;font-family:'Plus Jakarta Sans',sans-serif}
+.gc-dl:hover{opacity:0.85}
+
+/* ══════════════════════ CUSTOM LINK TOOL ══════════════════════ */
+.link-tool{max-width:600px;margin:0 auto}
+.link-intro{font-size:0.95rem;color:var(--muted);margin-bottom:28px;line-height:1.7;text-align:center}
+.link-form{background:var(--surface);border:1.5px solid var(--border);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:16px;animation:fadeUp 0.5s ease both}
+.link-field label{display:block;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.link-field input,.link-field select{width:100%;padding:12px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--surface-solid);color:var(--select-text);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.2s,box-shadow 0.2s;appearance:none}
+.link-field input:focus,.link-field select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow)}
+.link-field input::placeholder{color:var(--muted)}
+.gen-btn{padding:14px;border-radius:14px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent-b));color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.95rem;font-weight:700;cursor:pointer;box-shadow:0 6px 24px var(--glow);transition:transform 0.15s,opacity 0.2s}
+.gen-btn:hover{opacity:0.9;transform:translateY(-2px)}
+.link-result{background:var(--surface);border:1.5px solid var(--accent);border-radius:16px;padding:20px;display:none;flex-direction:column;gap:12px;animation:fadeUp 0.4s ease both}
+.link-result.show{display:flex}
+.link-result-label{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
+.link-url{font-size:0.82rem;color:var(--accent);word-break:break-all;background:var(--surface-solid);padding:10px 14px;border-radius:10px;border:1px solid var(--border)}
+.link-actions{display:flex;gap:8px;flex-wrap:wrap}
+.link-actions button{padding:9px 18px;border-radius:10px;border:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s}
+.btn-copy{background:var(--accent);color:#fff}
+.btn-wa{background:#25D366;color:#fff}
+.btn-tw{background:#1DA1F2;color:#fff}
+.link-preview{background:var(--surface-solid);border:1.5px solid var(--border);border-radius:14px;padding:16px;margin-top:4px}
+.link-preview p{font-size:0.85rem;color:var(--muted);line-height:1.6}
+.link-preview strong{color:var(--accent)}
+.link-stats{display:flex;gap:16px;flex-wrap:wrap}
+.stat-box{flex:1;min-width:100px;background:var(--surface-solid);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center}
+.stat-num{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent)}
+.stat-label{font-size:0.65rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-top:2px}
+
+/* SIDEBAR */
+.sidebar-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px;backdrop-filter:var(--blur)}
+.upcoming-list{display:flex;flex-direction:column;gap:10px}
+.upcoming-item{display:flex;align-items:center;gap:10px;cursor:pointer}
+.upcoming-days{min-width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-b));display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:0.9rem;color:#fff;line-height:1}
+.upcoming-days span{font-size:0.5rem;font-weight:500}
+.upcoming-info{flex:1}
+.upcoming-name{font-size:0.82rem;font-weight:600;line-height:1.2}
+.upcoming-date{font-size:0.68rem;color:var(--muted);margin-top:2px}
+.ad-sidebar{background:var(--ad-bg);border:1px solid var(--border);border-radius:18px;padding:10px;min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+
+/* CALENDAR */
+.calendar-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:20px 18px;backdrop-filter:var(--blur);overflow:hidden}
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.cal-month{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent-b));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cal-nav{display:flex;gap:4px}
+.cal-nav button{width:28px;height:28px;border-radius:8px;border:1.5px solid var(--border);background:var(--surface-solid);color:var(--accent);font-size:0.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.cal-nav button:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.cal-days-header{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:8px}
+.cal-days-header span{text-align:center;font-size:0.62rem;font-weight:700;letter-spacing:0.06em;color:var(--muted);padding:4px 0;text-transform:uppercase}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:0.75rem;font-weight:500;cursor:pointer;transition:all 0.18s;position:relative;color:var(--text);border:1.5px solid transparent}
+.cal-day:hover{background:var(--glow);border-color:var(--accent)}
+.cal-day.empty{pointer-events:none}
+.cal-day.today{background:linear-gradient(135deg,var(--accent),var(--accent-b));color:#fff;font-weight:700;box-shadow:0 4px 12px var(--glow);border-color:transparent}
+.cal-day.has-fest{font-weight:600;color:var(--accent)}
+.cal-day.has-fest::after{content:'';position:absolute;bottom:3px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--accent)}
+.cal-day.today.has-fest::after{background:#fff}
+.cal-tooltip{position:fixed;z-index:9999;background:var(--surface-solid);border:1.5px solid var(--accent);border-radius:10px;padding:8px 12px;font-size:0.75rem;font-weight:500;color:var(--text);box-shadow:0 8px 24px rgba(0,0,0,0.4);pointer-events:none;opacity:0;transition:opacity 0.15s;white-space:nowrap;max-width:220px}
+.cal-tooltip.show{opacity:1}
+.cal-legend{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:0.68rem;color:var(--muted)}
+.cal-legend-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+
+.ad-mid{width:100%;background:var(--ad-bg);border:1px solid var(--border);border-radius:16px;padding:10px;min-height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;animation:fadeUp 0.7s 0.5s ease both}
+.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(80px);background:linear-gradient(135deg,var(--accent),var(--accent-b));color:#fff;padding:12px 28px;border-radius:50px;font-size:0.85rem;font-weight:600;box-shadow:0 8px 30px var(--glow);transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1),opacity 0.3s;z-index:9999;opacity:0;pointer-events:none;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.footer{text-align:center;padding:24px;font-size:0.72rem;color:var(--muted);letter-spacing:0.07em;border-top:1px solid var(--border)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes glowPulse{0%,100%{filter:drop-shadow(0 0 0px var(--accent))}50%{filter:drop-shadow(0 0 28px var(--accent))}}
+@keyframes scaleBounce{0%,100%{transform:scale(1)}40%{transform:scale(1.06)}70%{transform:scale(0.97)}}
+@keyframes confettiFall{0%{transform:translateY(-40px) rotate(0deg) scale(1);opacity:1}85%{opacity:1}100%{transform:translateY(105vh) rotate(900deg) scale(0.4);opacity:0}}
+@keyframes flameDance{0%,100%{transform:scaleX(1) scaleY(1)}33%{transform:scaleX(1.05) scaleY(1.08)}66%{transform:scaleX(0.96) scaleY(1.04)}}
+@keyframes petalSway{0%{transform:translateY(-20px) rotate(0deg) translateX(0)}50%{transform:translateY(50vh) rotate(180deg) translateX(30px)}100%{transform:translateY(105vh) rotate(360deg) translateX(-20px);opacity:0}}
+@keyframes snowFall{0%{transform:translateY(-10px) rotate(0deg)}100%{transform:translateY(105vh) rotate(360deg);opacity:0}}
+@keyframes starTwinkle{0%,100%{opacity:0.2;transform:scale(0.8)}50%{opacity:1;transform:scale(1.3)}}
+@keyframes burstOut{0%{transform:scale(0);opacity:1}100%{transform:scale(3);opacity:0}}
+.greeting.glow{animation:glowPulse 1.3s ease forwards}
+.greeting.pulse{animation:scaleBounce 0.7s ease}
+.confetti{position:fixed;top:-40px;pointer-events:none;z-index:9998;border-radius:2px;animation:confettiFall linear forwards}
+.petal{position:fixed;top:-30px;pointer-events:none;z-index:9998;border-radius:50% 0 50% 0;animation:petalSway linear forwards}
+.snowflake{position:fixed;top:-10px;pointer-events:none;z-index:9998;color:white;animation:snowFall linear forwards}
+.eid-star{position:fixed;pointer-events:none;z-index:9998;font-size:1rem;animation:starTwinkle ease-in-out infinite}
+.burst-dot{position:fixed;pointer-events:none;z-index:9998;border-radius:50%;animation:burstOut ease-out forwards}
+
+@media(max-width:860px){.content-grid{grid-template-columns:1fr;padding:28px 16px}.main-col{padding-right:0}.sidebar{position:static;flex-direction:row;flex-wrap:wrap}.sidebar-card,.ad-sidebar{flex:1;min-width:240px}}
+@media(max-width:540px){.top-bar{padding:12px 14px;flex-wrap:wrap;gap:8px}.countdown-grid{grid-template-columns:repeat(2,1fr);max-width:280px}.share-buttons{grid-template-columns:repeat(2,1fr)}.controls{width:100%}.custom-select select{flex:1;font-size:0.76rem;min-width:90px}.article-grid{grid-template-columns:1fr}.card-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body class="dark">
+<canvas id="bgCanvas"></canvas>
+<div id="festBg"></div>
+<div class="toast" id="toast"></div>
+<div class="cal-tooltip" id="calTooltip"></div>
+<div id="articleModal" class="modal-overlay">
+  <div class="modal-box">
+    <div class="modal-hero" id="modalHero"></div>
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-content">
+      <h1 class="modal-title" id="modalTitle"></h1>
+      <div class="modal-meta" id="modalMeta"></div>
+      <div class="modal-ad">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="5566778899" data-ad-format="fluid" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
+      </div>
+      <div class="article-prose" id="modalBody"></div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+<div class="ad-top"><div class="ad-slot"><div class="ad-label">Advertisement</div>
+<ins class="adsbygoogle" style="display:block;width:100%;max-width:728px;" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="1234567890" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({})</script></div></div>
+
+<header class="top-bar">
+  <div class="brand">🎉 FestivCount</div>
+  <div class="controls">
+    <div class="custom-select"><select id="themeSelect"><option value="dark">🌙 Dark</option><option value="vibrant">🔮 Vibrant</option><option value="minimal">☀️ Minimal</option><option value="golden">✨ Golden</option><option value="ocean">🌊 Ocean</option></select></div>
+    <div class="custom-select"><select id="animationSelect"><option value="subtle">✦ Subtle</option><option value="balanced">◉ Balanced</option><option value="festive">🎉 Festive</option></select></div>
+    <div class="custom-select"><select id="countrySelect"><option value="IN">🇮🇳 India</option><option value="US">🇺🇸 USA</option><option value="GB">🇬🇧 UK</option><option value="AU">🇦🇺 Australia</option></select></div>
+  </div>
+</header>
+
+<nav class="main-nav">
+  <button class="nav-tab active" data-tab="home">🏠 Home</button>
+  <button class="nav-tab" data-tab="history">📖 Festival History</button>
+  <button class="nav-tab" data-tab="cards">🎨 Greeting Cards</button>
+  <button class="nav-tab" data-tab="link">🔗 Custom Link</button>
+</nav>
+
+<div class="content-grid">
+<div class="main-col">
+
+<!-- ══ HOME TAB ══ -->
+<div id="tab-home" class="section-page active">
+  <div class="hero">
+    <div class="festival-badge" id="categoryBadge">🗓 Live Countdown</div>
+    <p class="clock" id="clock"></p>
+    <h1 class="greeting" id="greeting">✨ Have a Wonderful Day!</h1>
+    <p class="sub-greeting" id="subGreeting"></p>
+    <div class="countdown-grid">
+      <div class="card"><span id="days">00</span><p>Days</p></div>
+      <div class="card"><span id="hours">00</span><p>Hours</p></div>
+      <div class="card"><span id="minutes">00</span><p>Minutes</p></div>
+      <div class="card"><span id="seconds">00</span><p>Seconds</p></div>
+    </div>
+    <p class="next-festival" id="nextFestival"></p>
+  </div>
+
+  <div class="ad-mid"><div class="ad-label">Advertisement</div>
+  <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0987654321" data-ad-format="fluid" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script></div>
+
+  <div class="message-card">
+    <div class="msg-header">
+      <span class="msg-title">📝 Your Greeting</span>
+      <div class="msg-templates">
+        <button class="tpl-btn" onclick="setTemplate('formal')">Formal</button>
+        <button class="tpl-btn" onclick="setTemplate('fun')">Fun 🎊</button>
+        <button class="tpl-btn" onclick="setTemplate('short')">Short</button>
+      </div>
+    </div>
+    <div class="name-row"><span class="name-icon">👤</span><input type="text" id="userName" placeholder="Your name — personalises every message" maxlength="40"/></div>
+    <textarea id="customMsg" placeholder="Your festival message will appear here..."></textarea>
+    <div class="char-count" id="charCount">0 / 280</div>
+    <button class="share-main" onclick="shareMessage()">📤 Share Greeting</button>
+    <div class="share-buttons">
+      <button class="wa" onclick="shareWhatsApp()">WhatsApp</button>
+      <button class="fb" onclick="shareFacebook()">Facebook</button>
+      <button class="tw" onclick="shareTwitter()">Twitter</button>
+      <button class="cp" onclick="copyMsg()">📋 Copy</button>
+    </div>
+  </div>
+
+  <div class="festivals-section">
+    <div class="section-title">🗓 All Festivals & Events</div>
+    <div class="filter-tabs" id="filterTabs">
+      <button class="tab active" data-cat="All">All</button>
+      <button class="tab" data-cat="National">🇮🇳 National</button>
+      <button class="tab" data-cat="Hindu">🪔 Hindu</button>
+      <button class="tab" data-cat="Islamic">🌙 Islamic</button>
+      <button class="tab" data-cat="Christian">✝️ Christian</button>
+      <button class="tab" data-cat="Sikh">🙏 Sikh</button>
+      <button class="tab" data-cat="Buddhist">☸️ Buddhist</button>
+      <button class="tab" data-cat="Jain">🕉️ Jain</button>
+      <button class="tab" data-cat="Event">🌍 Events</button>
+    </div>
+    <div class="festival-list" id="festivalList"></div>
+  </div>
+</div>
+
+<!-- ══ HISTORY TAB ══ -->
+<div id="tab-history" class="section-page">
+  <div class="history-page">
+    <div class="section-title">📖 Festival History & Significance</div>
+    <div class="history-search">
+      <input type="text" id="historySearch" placeholder="Search festivals..." oninput="filterArticles()"/>
+    </div>
+    <div class="article-grid" id="articleGrid"></div>
+  </div>
+</div>
+
+<!-- ══ CARDS TAB ══ -->
+<div id="tab-cards" class="section-page">
+  <div class="section-title">🎨 Downloadable Greeting Cards</div>
+  <p class="cards-intro">Original digital greeting cards for every festival — generated in your browser, personalised with your name, free to download and share.</p>
+  <div class="name-row" style="margin-bottom:16px;max-width:360px"><span class="name-icon">👤</span><input type="text" id="cardName" placeholder="Your name on the card" maxlength="30" oninput="renderCards()"/></div>
+  <div class="cards-filter" id="cardsFilter"></div>
+  <div class="card-grid" id="cardGrid"></div>
+</div>
+
+<!-- ══ CUSTOM LINK TAB ══ -->
+<div id="tab-link" class="section-page">
+  <div class="link-tool">
+    <div class="section-title">🔗 Custom Festival Link Generator</div>
+    <p class="link-intro">Generate a personalised greeting link to send to friends & family. When they open it, they'll see a message from <em>you</em>. Share it anywhere — WhatsApp, Instagram, email.</p>
+    <div class="link-stats" id="linkStats" style="margin-bottom:24px">
+      <div class="stat-box"><div class="stat-num" id="statLinks">0</div><div class="stat-label">Links Created</div></div>
+      <div class="stat-box"><div class="stat-num" id="statFests">50+</div><div class="stat-label">Festivals</div></div>
+      <div class="stat-box"><div class="stat-num" id="statShares">0</div><div class="stat-label">Times Shared</div></div>
+    </div>
+    <div class="link-form">
+      <div class="link-field"><label>👤 Your Name</label><input type="text" id="linkName" placeholder="e.g. Priya Sharma" maxlength="40"/></div>
+      <div class="link-field"><label>💬 Message for your friend</label><input type="text" id="linkMsg" placeholder="e.g. Wishing you a sparkling Diwali!" maxlength="120"/></div>
+      <div class="link-field"><label>🎉 Festival</label>
+        <div class="custom-select" style="width:100%"><select id="linkFest" style="width:100%;min-width:unset"></select></div>
+      </div>
+      <div class="link-field"><label>🎨 Link Theme</label>
+        <div class="custom-select" style="width:100%"><select id="linkTheme" style="width:100%;min-width:unset">
+          <option value="dark">🌙 Dark Glow</option><option value="golden">✨ Golden</option>
+          <option value="vibrant">🔮 Vibrant</option><option value="ocean">🌊 Ocean</option>
+        </select></div>
+      </div>
+      <button class="gen-btn" onclick="generateLink()">✨ Generate My Link</button>
+    </div>
+    <div class="link-result" id="linkResult">
+      <div class="link-result-label">🔗 Your Personalised Link</div>
+      <div class="link-url" id="linkUrl"></div>
+      <div class="link-actions">
+        <button class="link-actions button btn-copy" onclick="copyGeneratedLink()">📋 Copy</button>
+        <button class="link-actions button btn-wa" onclick="shareGenWA()">WhatsApp</button>
+        <button class="link-actions button btn-tw" onclick="shareGenTW()">Twitter</button>
+      </div>
+      <div class="link-preview" id="linkPreview"></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /main-col -->
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="sidebar-card calendar-card">
+    <div class="cal-header"><div class="cal-month" id="calMonth">April 2026</div><div class="cal-nav"><button onclick="changeMonth(-1)">‹</button><button onclick="changeMonth(1)">›</button></div></div>
+    <div class="cal-days-header"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+    <div class="cal-grid" id="calGrid"></div>
+    <div class="cal-legend"><div class="cal-legend-dot"></div><span>Festival day</span></div>
+  </div>
+  <div class="sidebar-card"><div class="section-title">⏳ Coming Soon</div><div class="upcoming-list" id="upcomingList"></div></div>
+  <div class="ad-sidebar"><div class="ad-label">Advertisement</div>
+  <ins class="adsbygoogle" style="display:block;width:100%;min-height:250px;" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="1122334455" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script></div>
+</div>
+
+</div><!-- /content-grid -->
+<footer class="footer">🎉 FestivCount &nbsp;·&nbsp; Celebrating Every Festival &nbsp;·&nbsp; Made with ❤️ in India</footer>
+</div><!-- /page -->
+
+<script>
+/* ══ CANVAS ══ */
+const canvas=document.getElementById("bgCanvas"),ctx=canvas.getContext("2d");
+let W,H,stars=[];
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
+function makeStar(){return{x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.2+0.2,dx:(Math.random()-0.5)*0.15,dy:(Math.random()-0.5)*0.15,a:Math.random()*0.6+0.1,tw:Math.random()*Math.PI*2}}
+function initStars(){stars=Array.from({length:140},makeStar)}
+function drawStars(){ctx.clearRect(0,0,W,H);stars.forEach(s=>{s.x+=s.dx;s.y+=s.dy;s.tw+=0.02;if(s.x<0)s.x=W;if(s.x>W)s.x=0;if(s.y<0)s.y=H;if(s.y>H)s.y=0;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(255,255,255,${s.a*(0.55+0.45*Math.sin(s.tw))})`;ctx.fill()});requestAnimationFrame(drawStars)}
+resize();initStars();drawStars();window.addEventListener("resize",()=>{resize();initStars()});
+
+/* ══ FESTIVAL BG FX ══ */
+const festBgCfg={"Diwali":{type:"diyas",colors:["#ff9d00","#ff6b00","#ffcc00"],gradient:"radial-gradient(ellipse at 50% 80%,rgba(255,150,0,0.25),transparent 60%)"},"Holi":{type:"petals",colors:["#ff3cac","#00f2fe","#43e97b","#fa709a","#fee140"],gradient:"radial-gradient(ellipse at 30% 40%,rgba(255,60,172,0.2),transparent 50%)"},"Christmas":{type:"snow",colors:["#ffffff","#c8e6ff"],gradient:"radial-gradient(ellipse at 50% 0%,rgba(100,180,255,0.18),transparent 60%)"},"Christmas Eve":{type:"snow",colors:["#ffffff","#c8e6ff"],gradient:"radial-gradient(ellipse at 50% 0%,rgba(100,180,255,0.15),transparent 60%)"},"Eid al-Fitr":{type:"stars",colors:["#ffd700","#c0a000","#fff7c0"],gradient:"radial-gradient(ellipse at 50% 30%,rgba(200,160,0,0.2),transparent 60%)"},"Eid al-Adha":{type:"stars",colors:["#ffd700","#c0a000"],gradient:"radial-gradient(ellipse at 50% 30%,rgba(200,160,0,0.2),transparent 60%)"},"New Year's Day":{type:"burst",colors:["#ff5f57","#ffd93d","#6bcb77","#4d96ff","#ff6bff"],gradient:"radial-gradient(ellipse at 50% 50%,rgba(255,95,87,0.2),transparent 60%)"},"New Year's Eve":{type:"burst",colors:["#ff5f57","#ffd93d","#4d96ff"],gradient:"radial-gradient(ellipse at 50% 50%,rgba(255,95,87,0.2),transparent 60%)"},"Republic Day":{type:"confetti",colors:["#ff9933","#ffffff","#138808"],gradient:"radial-gradient(ellipse at 50% 50%,rgba(255,153,51,0.15),transparent 60%)"},"Independence Day":{type:"confetti",colors:["#ff9933","#ffffff","#138808"],gradient:""},"Navratri":{type:"petals",colors:["#ff69b4","#ff1493","#ffd700","#9370db"],gradient:"radial-gradient(ellipse at 50% 50%,rgba(255,105,180,0.2),transparent 60%)"},"Valentine's Day":{type:"hearts",colors:["#ff1493","#ff69b4"],gradient:"radial-gradient(ellipse at 50% 50%,rgba(255,20,147,0.2),transparent 60%)"},"Halloween":{type:"confetti",colors:["#ff6600","#660099","#cc3300"],gradient:"radial-gradient(ellipse at 50% 50%,rgba(102,0,153,0.25),transparent 60%)"},"default":{type:"confetti",colors:["#ff5f57","#ffd93d","#38bdf8","#c084fc","#34d399"],gradient:""}};
+function clearBgFx(){document.querySelectorAll(".petal,.snowflake,.eid-star,.burst-dot").forEach(e=>e.remove());document.getElementById("festBg").style.opacity="0";document.getElementById("festBg").style.background="none"}
+function triggerFestBg(n){clearBgFx();const c=festBgCfg[n]||festBgCfg["default"];const bg=document.getElementById("festBg");bg.style.background=c.gradient;bg.style.opacity="1";if(c.type==="petals"||c.type==="hearts"){for(let i=0;i<25;i++)setTimeout(()=>spawnPetal(c.colors,c.type),i*200);setInterval(()=>spawnPetal(c.colors,c.type),800)}if(c.type==="snow"){for(let i=0;i<30;i++)setTimeout(spawnSnow,i*150);setInterval(spawnSnow,500)}if(c.type==="stars")spawnEidStars(c.colors);if(c.type==="burst")spawnBurst(c.colors);if(c.type==="diyas")startDiyas();if(c.type==="confetti")spawnBgConfetti(c.colors)}
+function spawnPetal(colors,type){const p=document.createElement("div");p.className="petal";const isH=(type==="hearts");p.style.cssText=`left:${Math.random()*100}vw;width:${Math.random()*12+8}px;height:${Math.random()*12+8}px;background:${colors[Math.floor(Math.random()*colors.length)]};animation-duration:${Math.random()*4+4}s;animation-delay:${Math.random()*0.5}s;opacity:${Math.random()*0.6+0.4};border-radius:${isH?"50% 0 50% 0":"50% 10% 50% 10%"}`;if(isH){p.innerHTML="❤️";p.style.background="none";p.style.fontSize=`${Math.random()*12+10}px`}document.body.appendChild(p);setTimeout(()=>p.remove(),8000)}
+function spawnSnow(){const s=document.createElement("div");s.className="snowflake";s.style.cssText=`left:${Math.random()*100}vw;font-size:${Math.random()*14+8}px;animation-duration:${Math.random()*5+5}s;opacity:${Math.random()*0.6+0.3}`;s.textContent=["❄","❅","❆","·"][Math.floor(Math.random()*4)];document.body.appendChild(s);setTimeout(()=>s.remove(),10000)}
+function spawnEidStars(colors){for(let i=0;i<20;i++){const s=document.createElement("div");s.className="eid-star";s.textContent=["★","✦","✧","☽"][Math.floor(Math.random()*4)];s.style.cssText=`left:${Math.random()*100}vw;top:${Math.random()*100}vh;color:${colors[Math.floor(Math.random()*colors.length)]};font-size:${Math.random()*14+8}px;animation-duration:${Math.random()*2+1}s;animation-delay:${Math.random()*2}s`;document.body.appendChild(s)}}
+function spawnBurst(colors){const cx=window.innerWidth/2,cy=window.innerHeight/3;for(let i=0;i<40;i++){const d=document.createElement("div");d.className="burst-dot";const a=Math.random()*Math.PI*2,r=Math.random()*40+20;d.style.cssText=`left:${cx+Math.cos(a)*r}px;top:${cy+Math.sin(a)*r}px;width:${Math.random()*8+4}px;height:${Math.random()*8+4}px;background:${colors[Math.floor(Math.random()*colors.length)]};animation-duration:${Math.random()*0.6+0.4}s;animation-delay:${Math.random()*0.8}s`;document.body.appendChild(d);setTimeout(()=>d.remove(),3000)}setTimeout(()=>spawnBurst(colors),2500)}
+function startDiyas(){for(let i=0;i<12;i++){const d=document.createElement("div");d.style.cssText=`position:fixed;bottom:${Math.random()*20+5}%;left:${Math.random()*100}vw;font-size:${Math.random()*20+14}px;animation:flameDance ${Math.random()*1+0.8}s ease-in-out infinite;z-index:9998;pointer-events:none`;d.textContent="🪔";document.body.appendChild(d)}}
+function spawnBgConfetti(colors){for(let i=0;i<30;i++)setTimeout(()=>{const c=document.createElement("div");c.className="confetti";c.style.cssText=`left:${Math.random()*100}vw;width:${Math.random()*8+4}px;height:${Math.random()*8+4}px;background:${colors[Math.floor(Math.random()*colors.length)]};border-radius:${Math.random()>.5?"50%":"2px"};animation-duration:${Math.random()*2.5+3}s;animation-delay:${Math.random()}s`;document.body.appendChild(c);setTimeout(()=>c.remove(),6000)},i*100)}
+
+/* ══ FESTIVAL DATA ══ */
+const festivals=[
+  {name:"New Year's Day",date:"01-01",emoji:"🎆",cat:"National",msg:["Wishing you a year filled with joy, health, and prosperity! 🎆 Happy New Year!","365 new days, 365 new chances. Let's make it count! Happy New Year! 🥂"]},
+  {name:"Guru Gobind Singh Jayanti",date:"01-06",emoji:"🙏",cat:"Sikh",msg:["Waheguru Ji Ka Khalsa, Waheguru Ji Ki Fateh! 🙏 Happy Guru Gobind Singh Jayanti!"]},
+  {name:"Lohri",date:"01-13",emoji:"🔥",cat:"Sikh",msg:["Happy Lohri! 🔥 May the bonfire of Lohri warm your heart and bring prosperity!"]},
+  {name:"Makar Sankranti",date:"01-14",emoji:"🪁",cat:"Hindu",msg:["May this Makar Sankranti bring sweetness and warmth of the sun into your life! 🪁"]},
+  {name:"Pongal",date:"01-14",emoji:"🍚",cat:"Hindu",msg:["Happy Pongal! 🍚 May this harvest festival bring you joy and abundance."]},
+  {name:"Republic Day",date:"01-26",emoji:"🇮🇳",cat:"National",msg:["Jai Hind! 🇮🇳 Happy Republic Day! Proud to be an Indian on this glorious day."]},
+  {name:"Basant Panchami",date:"02-02",emoji:"💛",cat:"Hindu",msg:["May Goddess Saraswati bless you with knowledge and wisdom! Happy Basant Panchami! 💛"]},
+  {name:"Valentine's Day",date:"02-14",emoji:"❤️",cat:"Event",msg:["Happy Valentine's Day! ❤️ You make every day special."]},
+  {name:"Maha Shivratri",date:"02-26",emoji:"🔱",cat:"Hindu",msg:["Om Namah Shivaya! 🔱 May Lord Shiva bless you. Happy Maha Shivratri!"]},
+  {name:"International Women's Day",date:"03-08",emoji:"👩",cat:"Event",msg:["Happy Women's Day! 👩 To every woman who dares to dream — you inspire us all."]},
+  {name:"Holi",date:"03-14",emoji:"🌈",cat:"Hindu",msg:["Wishing you a colourful and joyful Holi! 🌈","Bura na mano Holi hai! 🎨 Happy Holi!"]},
+  {name:"Eid al-Fitr",date:"03-31",emoji:"🌙",cat:"Islamic",msg:["Eid Mubarak! 🌙 May Allah bless you with happiness."]},
+  {name:"Ram Navami",date:"04-06",emoji:"🙏",cat:"Hindu",msg:["Jai Shri Ram! 🙏 Happy Ram Navami!"]},
+  {name:"Mahavir Jayanti",date:"04-10",emoji:"🕉️",cat:"Jain",msg:["Jai Jinendra! 🕉️ Happy Mahavir Jayanti!"]},
+  {name:"Baisakhi",date:"04-13",emoji:"🌾",cat:"Sikh",msg:["Happy Baisakhi! 🌾 May this harvest festival bring joy and prosperity!"]},
+  {name:"Good Friday",date:"04-18",emoji:"✝️",cat:"Christian",msg:["Reflecting on the sacrifice of Jesus Christ on Good Friday. ✝️ God bless you."]},
+  {name:"Easter",date:"04-20",emoji:"🐣",cat:"Christian",msg:["Happy Easter! 🐣 May the resurrection of Jesus bring hope to your heart."]},
+  {name:"Earth Day",date:"04-22",emoji:"🌍",cat:"Event",msg:["Happy Earth Day! 🌍 Let's pledge to protect our planet."]},
+  {name:"Labour Day",date:"05-01",emoji:"✊",cat:"Event",msg:["Happy Labour Day! ✊ Saluting every worker who builds our nation."]},
+  {name:"Buddha Purnima",date:"05-12",emoji:"☸️",cat:"Buddhist",msg:["Happy Buddha Purnima! ☸️ May the teachings of Lord Buddha bring peace."]},
+  {name:"Mothers Day",date:"05-11",emoji:"💐",cat:"Event",msg:["Happy Mother's Day! 💐 Thank you for everything, Maa."]},
+  {name:"Eid al-Adha",date:"06-07",emoji:"🌙",cat:"Islamic",msg:["Eid ul Adha Mubarak! 🌙 May Allah accept your sacrifices."]},
+  {name:"Fathers Day",date:"06-15",emoji:"👨",cat:"Event",msg:["Happy Father's Day! 👨 To the man who taught me everything — thank you."]},
+  {name:"Rath Yatra",date:"06-27",emoji:"🛕",cat:"Hindu",msg:["Jai Jagannath! 🛕 Happy Rath Yatra!"]},
+  {name:"Independence Day",date:"08-15",emoji:"🇮🇳",cat:"National",msg:["Happy Independence Day! 🇮🇳 Jai Hind!"]},
+  {name:"Raksha Bandhan",date:"08-09",emoji:"🪢",cat:"Hindu",msg:["Happy Raksha Bandhan! 🪢 The bond of love between siblings is priceless."]},
+  {name:"Janmashtami",date:"08-16",emoji:"🦚",cat:"Hindu",msg:["Radhe Radhe! 🦚 Happy Janmashtami! Jai Shri Krishna!"]},
+  {name:"Ganesh Chaturthi",date:"08-27",emoji:"🐘",cat:"Hindu",msg:["Ganpati Bappa Morya! 🐘 Happy Ganesh Chaturthi!"]},
+  {name:"Teachers Day",date:"09-05",emoji:"📚",cat:"Event",msg:["Happy Teacher's Day! 📚 Thank you for shaping minds and changing lives."]},
+  {name:"Navratri",date:"09-22",emoji:"🪔",cat:"Hindu",msg:["Happy Navratri! 🪔 Jai Mata Di! 🙏"]},
+  {name:"Gandhi Jayanti",date:"10-02",emoji:"🕊️",cat:"National",msg:["Be the change you wish to see in the world. Happy Gandhi Jayanti! 🕊️"]},
+  {name:"Dussehra",date:"10-02",emoji:"🏹",cat:"Hindu",msg:["Happy Dussehra! 🏹 May good always triumph over evil."]},
+  {name:"Dhanteras",date:"10-20",emoji:"💰",cat:"Hindu",msg:["Happy Dhanteras! 💰 May Goddess Lakshmi bless your home."]},
+  {name:"Diwali",date:"10-21",emoji:"🪔",cat:"Hindu",msg:["Happy Diwali! 🪔 May the festival of lights fill your home with joy.","Let the diyas dispel all darkness. Happy Diwali! 🪔"]},
+  {name:"Halloween",date:"10-31",emoji:"🎃",cat:"Event",msg:["Happy Halloween! 🎃 More treat than trick!"]},
+  {name:"Guru Nanak Jayanti",date:"11-05",emoji:"🙏",cat:"Sikh",msg:["Waheguru! Happy Guru Nanak Jayanti! 🙏"]},
+  {name:"Children's Day",date:"11-14",emoji:"🧒",cat:"Event",msg:["Happy Children's Day! 🧒 May every child be blessed with love and dreams."]},
+  {name:"Christmas Eve",date:"12-24",emoji:"🌟",cat:"Christian",msg:["Christmas Eve is here! 🌟 Wishing you a magical night."]},
+  {name:"Christmas",date:"12-25",emoji:"🎄",cat:"Christian",msg:["Merry Christmas! 🎄 May Santa bring you joy and all your heart desires."]},
+  {name:"New Year's Eve",date:"12-31",emoji:"🥂",cat:"Event",msg:["Cheers to a brand new year! 🥂 May it bring everything you wished for!"]},
+];
+
+/* ══ ARTICLES DATABASE ══ */
+const articles=[
+  {id:"diwali",name:"Diwali",emoji:"🪔",cat:"Hindu",color:"#ff9d00",bg:"linear-gradient(135deg,#1a0a00,#3d1f00)",words:"~1,050",read:"5 min",
+  title:"Diwali — The Festival of Lights: History, Traditions & Significance",
+  content:`<h2>What is Diwali?</h2><p>Diwali, also known as Deepawali (from Sanskrit <em>deepa</em> = light and <em>avali</em> = row), is the most widely celebrated Hindu festival in the world. Observed across India, Nepal, Sri Lanka, and by Hindu diaspora globally, it marks the spiritual victory of light over darkness, knowledge over ignorance, and good over evil. The five-day festival falls in the Hindu month of Kartik (October–November), coinciding with the new moon night.</p><h2>Historical Origins</h2><h3>The Ramayana Connection</h3><p>The most popular origin story traces Diwali to the return of Lord Rama to Ayodhya after 14 years of exile and his defeat of the demon king Ravana. According to the Valmiki Ramayana, the citizens of Ayodhya lit rows of earthen lamps (<em>diyas</em>) to welcome Rama, his wife Sita, and brother Lakshmana home. This tradition of lighting diyas has continued unbroken for millennia.</p><h3>The Mahabharata Connection</h3><p>Another major origin links Diwali to the Pandavas' return from their 12 years of exile and one year of living incognito, as narrated in the Mahabharata. Communities lit lamps to celebrate the return of the righteous Pandavas.</p><h3>Goddess Lakshmi's Birthday</h3><p>For many devotees, Diwali marks the birth of Goddess Lakshmi — the deity of wealth, fortune, and prosperity — who emerged from the cosmic ocean during the churning of the seas (Samudra Manthan). Lakshmi Puja on the main night of Diwali is the central ritual of the festival in many communities.</p><h3>The Narakasura Legend</h3><p>In southern India, particularly Andhra Pradesh and Tamil Nadu, Diwali celebrates the defeat of the demon Narakasura by Lord Krishna and his wife Satyabhama. This tradition focuses on the victory of divine forces over tyranny and oppression.</p><div class="highlight-box"><strong>Did you know?</strong> Diwali is observed by over 1 billion people across the world and is a public holiday in 11 countries including India, Nepal, Sri Lanka, Myanmar, Fiji, Guyana, Trinidad and Tobago, Malaysia, Singapore, Mauritius, and Pakistan.</div><h2>The Five Days of Diwali</h2><h3>Day 1 — Dhanteras (Dhanatrayodashi)</h3><p>The festival begins with Dhanteras, where <em>dhana</em> means wealth and <em>teras</em> means the thirteenth day. People clean their homes, purchase gold, silver, new utensils, or electronics as an auspicious beginning. Lord Dhanvantari, the physician of the gods, is worshipped on this day.</p><h3>Day 2 — Naraka Chaturdashi (Choti Diwali)</h3><p>This day commemorates Krishna's defeat of Narakasura. People wake before sunrise, apply sesame oil (abhyanga snan), and light firecrackers symbolising the destruction of evil. In many families, this is the day for elaborate rangoli designs and decorating the home.</p><h3>Day 3 — Diwali (Main Night)</h3><p>The new moon night is the heart of Diwali. Families perform Lakshmi Puja at sunset, lighting rows of diyas inside and outside the home. Firecrackers light up the sky. Families visit each other, exchange sweets and gifts, and gamble — a tradition said to represent Goddess Parvati's blessing that those who gamble on this night will prosper throughout the year.</p><h3>Day 4 — Govardhan Puja / Padwa</h3><p>This day celebrates Krishna lifting the Govardhan Hill to protect villagers from Indra's wrath. In many communities, it marks the first day of the new year. Husbands present gifts to wives, and elaborate food offerings are made to God.</p><h3>Day 5 — Bhai Dooj</h3><p>The festival concludes with the celebration of the brother-sister bond. Sisters apply tilak on brothers' foreheads and pray for their long life; brothers give gifts in return. This mirrors Raksha Bandhan's spirit of sibling love.</p><h2>Regional Variations Across India</h2><p>India's diversity means Diwali takes different forms across the country. In <strong>West Bengal</strong>, it coincides with Kali Puja — worship of Goddess Kali. In <strong>Punjab</strong>, Diwali marks Guru Hargobind's release from Mughal imprisonment (Bandi Chhor Divas). In <strong>Jainism</strong>, Diwali marks the nirvana of Lord Mahavira. In <strong>Sikhism</strong>, the Golden Temple in Amritsar is illuminated magnificently.</p><h2>Traditions and Customs</h2><p>The preparation for Diwali begins weeks in advance. Homes are deep-cleaned — it is believed Goddess Lakshmi only visits clean homes. The exterior and interior are decorated with <em>rangoli</em> (intricate floor patterns made with coloured powders, flowers, or rice), diyas, candles, and string lights. New clothes are worn. Special sweets like <em>ladoo, barfi, gulab jamun, kaju katli</em>, and savoury snacks like <em>chakli, sev, mathri</em> are prepared and shared with neighbours.</p><h2>Global Celebrations</h2><p>Diwali is now celebrated worldwide. The United Kingdom, USA, Canada, and Australia all host major public Diwali events. New York's Times Square, the White House, and the British Parliament have hosted official Diwali events. NASA has photographed the Indian subcontinent from space on Diwali night — and the explosion of lights is clearly visible from orbit.</p>`},
+
+  {id:"holi",name:"Holi",emoji:"🌈",cat:"Hindu",color:"#ff3cac",bg:"linear-gradient(135deg,#0d001a,#1a003d)",words:"~1,020",read:"5 min",
+  title:"Holi — The Festival of Colours: Origins, Legends & Celebrations",
+  content:`<h2>What is Holi?</h2><p>Holi is one of the oldest and most joyous Hindu festivals, celebrated every year on the full moon day (Purnima) of the Hindu month Phalguna (February–March). Known as the Festival of Colours, the Festival of Love, and the Festival of Spring, it marks the end of winter and the arrival of spring. Millions across India, Nepal, and the Indian diaspora celebrate by throwing coloured powder and water at each other in scenes of unrestrained joy.</p><h2>Ancient Origins</h2><p>The festival's origins are at least 2,000 years old. The earliest references appear in the 4th-century Sanskrit play <em>Ratnavali</em> by King Harsha. The Puranas — ancient Hindu scriptures — provide the mythology behind the festival. The Bhavishya Purana mentions a festival called "Adada" that matches many Holi customs.</p><h3>The Legend of Holika and Prahlada</h3><p>The most central legend involves the demon king Hiranyakashipu, who believed himself to be god and demanded worship from everyone — including his own son Prahlada, a devoted follower of Lord Vishnu. Enraged, the king tried numerous times to kill his son, each time being foiled. Finally, Hiranyakashipu's sister Holika — who had a boon of immunity to fire — sat in a burning pyre with Prahlada in her lap. But divine protection sheltered Prahlada while Holika burned. The burning effigy of Holika (Holika Dahan) on the night before Holi commemorates this victory of devotion over evil.</p><div class="highlight-box"><strong>Cultural note:</strong> The word "Holi" itself may derive from "Holika." The bonfire lit on Holi eve is called Holika Dahan in North India and Kamadahana in South India.</div><h3>The Krishna Connection</h3><p>Another major legend connects Holi to Lord Krishna, who is said to have played with coloured water and powder with Radha and the gopis (cowherdesses) of Vrindavan. Krishna, having blue skin, playfully asked his mother Yashoda why Radha was fair-skinned while he was dark. Yashoda suggested he could colour Radha's face any colour he liked — and thus began the tradition of applying colour. The town of Vrindavan in Uttar Pradesh celebrates Holi for 16 days, making it the world's most extended and elaborate Holi celebration.</p><h2>Celebrations Across India</h2><h3>Vrindavan and Mathura</h3><p>Considered the birthplace of Holi traditions, these twin towns in Uttar Pradesh celebrate for over two weeks. The <em>Lath Mar Holi</em> of Barsana is legendary — women chase men with sticks while men try to shield themselves with shields, re-enacting Krishna and Radha's playful games.</p><h3>Purulia, West Bengal — Dol Purnima</h3><p>In Bengal, Holi is called Dol Purnima and focuses on devotional aspects — swinging idols of Radha and Krishna on flower-decorated swings while devotees throw colour.</p><h3>Rajasthan — Royal Holi</h3><p>The royal cities of Jaipur and Udaipur celebrate with elephant processions, folk performances, and massive community celebrations in the palace courtyards.</p><h2>The Science Behind the Colours</h2><p>Traditional Holi colours were made from natural sources: <em>gulal</em> (red) from dried hibiscus or rose petals; yellow from turmeric; green from henna leaves; blue from indigo. Modern synthetic colours are widespread, but there is a growing movement back to natural, herbal colours that are gentle on skin. The tradition of using water-based colour is also ecologically friendlier than the oil-based varieties that require harsh soaps to remove.</p><h2>The Social Significance</h2><p>Holi has a remarkable social function: it is one of the rare occasions when social hierarchies dissolve. The phrase <strong>"Bura na mano, Holi hai"</strong> (Don't mind, it's Holi!) gives licence to everyone — regardless of age, gender, caste, or class — to play together. Strangers throw colour at each other; employers play with employees; old grudges are forgiven. The festival actively promotes social unity and the erasure of resentment.</p><h2>Global Spread</h2><p>Holi has become a global phenomenon. "Color Runs" inspired by Holi take place across the USA, Europe, and Australia. Universities worldwide host Holi events. In 2013, the YouTube video of a Utah Holi festival went viral with 100 million views, introducing millions to the tradition.</p>`},
+
+  {id:"eid",name:"Eid al-Fitr",emoji:"🌙",cat:"Islamic",color:"#f5c518",bg:"linear-gradient(135deg,#0a0800,#1a1200)",words:"~1,000",read:"5 min",
+  title:"Eid al-Fitr — The Festival of Breaking the Fast: History & Traditions",
+  content:`<h2>What is Eid al-Fitr?</h2><p>Eid al-Fitr (Arabic: عيد الفطر‎) — meaning "Festival of Breaking the Fast" — is one of the two most important Islamic holidays, observed by over 1.8 billion Muslims worldwide at the end of Ramadan, the holy month of fasting. Falling on the first day of Shawwal (the month following Ramadan), Eid is a time of profound gratitude, communal prayer, charity, and joyful celebration. It is a reward for the spiritual discipline maintained throughout Ramadan.</p><h2>The Historical Origins</h2><p>The festival was established by Prophet Muhammad (PBUH) after his migration (Hijra) from Mecca to Medina in 622 CE. According to hadith (recorded sayings and traditions of the Prophet), when Muhammad arrived in Medina, the people there had two days of celebration. Muhammad declared that Allah had replaced those days with two better ones: Eid al-Fitr and Eid al-Adha. The first Eid al-Fitr was celebrated in 624 CE, in the second year after the Hijra.</p><div class="highlight-box"><strong>Historical note:</strong> The Islamic calendar is lunar, so Eid falls approximately 11 days earlier each solar year. This means that over the course of a lifetime, Muslims fast and celebrate Eid across every season.</div><h2>The Significance of Ramadan</h2><p>Eid cannot be understood without Ramadan. During the 29 or 30 days of Ramadan, adult Muslims fast from dawn (Fajr) to sunset (Maghrib) — abstaining from food, drink, smoking, and marital relations. The fast is not merely physical; it is a time for heightened spirituality, increased prayer, reading of the Quran, and charitable giving. The Night of Power (Laylat al-Qadr), believed to be in the last 10 nights of Ramadan, is considered holier than a thousand months. Eid celebrates the successful completion of this intense spiritual journey.</p><h2>Zakat al-Fitr: The Obligatory Charity</h2><p>Before the Eid prayer, every adult Muslim who is financially able is required to give Zakat al-Fitr — a specific amount of food (or its monetary equivalent) to those in need. This ensures that every Muslim, regardless of economic status, can participate in Eid celebrations. The distribution of Zakat al-Fitr must be completed before the Eid prayer, making the festival one of the world's largest annual charity events.</p><h2>Eid Traditions and Customs</h2><h3>The Eid Prayer</h3><p>The day begins with a special congregational prayer called Salat al-Eid, performed in large open spaces or mosques after sunrise. The prayer consists of two units (rak'ahs) and is followed by a sermon (khutba). This gathering — sometimes comprising hundreds of thousands of worshippers — is the centrepiece of Eid.</p><h3>Eid Greetings</h3><p>"Eid Mubarak" (Blessed Eid) is the universal greeting exchanged between Muslims worldwide. In Arabic it is "عيد مبارك"; in Urdu it is "عید مبارک"; in Persian it is "عید مبارک". Regional variations include "Eid Sa'id" (Happy Eid) in Arab countries. The greeting is accompanied by embraces and handshakes.</p><h3>New Clothes and Gifts</h3><p>Wearing new clothes on Eid is a Sunnah (tradition of the Prophet). Children receive gifts of money called <em>Eidi</em> from elders. In South Asia, this tradition is highly anticipated — children often receive new notes from grandparents, uncles, and aunts.</p><h3>Special Foods</h3><p>Each culture has its Eid specialties. In India and Pakistan, <em>Sheer Khurma</em> (a rich vermicelli pudding with dates and milk) is the quintessential Eid morning dish. The Middle East serves <em>maamoul</em> (date-filled shortbread). Indonesia prepares <em>ketupat</em> (rice cakes in woven pouches). Morocco makes <em>kaab el ghzal</em> (crescent-shaped almond pastries). These foods are shared with family, friends, and neighbours.</p><h2>Eid Around the World</h2><p>Eid is a public holiday in over 20 countries including Pakistan, Bangladesh, Indonesia, Egypt, Saudi Arabia, Malaysia, Turkey, and the UAE. In India, where Muslims form the world's second-largest Muslim population, Eid is celebrated with enormous fervour. Historic mosques like Jama Masjid in Delhi see tens of thousands gather for Eid prayers. The famous "Eid ka Chand" (sighting of the Eid moon) has traditionally been a moment of communal excitement across South Asia.</p><h2>Modern Celebrations</h2><p>Today, Eid is celebrated globally by Muslim communities in Europe, the Americas, and Australia. Major cities like London, New York, and Sydney host public Eid events and prayers. Social media buzzes with "Eid Mubarak" messages in dozens of languages. Digital Eid cards and WhatsApp greetings have become part of the modern tradition while preserving the timeless spirit of the festival.</p>`},
+
+  {id:"christmas",name:"Christmas",emoji:"🎄",cat:"Christian",color:"#38bdf8",bg:"linear-gradient(135deg,#001a0d,#003322)",words:"~1,010",read:"5 min",
+  title:"Christmas — The Birth of Jesus Christ: 2,000 Years of History & Tradition",
+  content:`<h2>What is Christmas?</h2><p>Christmas (from Old English <em>Cristes Maesse</em>, meaning "Christ's Mass") is the annual Christian festival celebrated on 25 December commemorating the birth of Jesus Christ, whom Christians believe to be the Son of God and the fulfilment of ancient prophecy. Observed by approximately 2.4 billion Christians worldwide, Christmas is also widely celebrated secularly as a cultural festival of giving, family, and goodwill.</p><h2>The Historical Background</h2><h3>The Birth of Jesus</h3><p>According to the Gospels of Matthew and Luke in the New Testament, Jesus was born in Bethlehem to Mary and Joseph. The Annunciation — when the angel Gabriel appeared to Mary — preceded the birth. The nativity scene that is central to Christmas celebrations worldwide depicts the infant Jesus in a manger, surrounded by Mary, Joseph, shepherds, animals, and later the three Magi (wise men) who followed the Star of Bethlehem.</p><h3>The Date of December 25</h3><p>The date of December 25 was not officially established until the 4th century CE. The first recorded Christmas celebration on December 25 was in Rome in 336 CE. The choice of date has been widely discussed: some historians believe it coincided with the Roman festival of Saturnalia or the winter solstice celebration Sol Invictus ("Unconquered Sun"). The church may have strategically adopted this date to bring converts from Roman paganism into the fold.</p><div class="highlight-box"><strong>Historical note:</strong> The word "Christmas" appears in English records as early as 1038 CE as "Cristes Maesse." The abbreviation "Xmas" dates to the 16th century, with X representing the Greek letter Chi — the first letter of "Christos" (Christ).</div><h2>The Evolution of Christmas Traditions</h2><h3>Saint Nicholas and Father Christmas</h3><p>The figure of Santa Claus evolved from Saint Nicholas of Myra (c.270–343 CE), a Christian bishop in what is now Turkey, famous for his generosity to the poor. His feast day of 6 December was associated with gift-giving in medieval Europe. Dutch settlers brought the tradition of "Sinterklaas" to America, which eventually merged with British "Father Christmas" traditions to create the modern Santa Claus — a jolly red-suited figure popularised by Clement Clarke Moore's 1823 poem "A Visit from St. Nicholas" and later cemented by Coca-Cola's iconic 1930s advertising campaigns.</p><h3>The Christmas Tree</h3><p>The tradition of decorating evergreen trees at midwinter predates Christianity and was common among the Germanic peoples. It was adopted into Christian tradition in 16th-century Germany. The modern Christmas tree tradition spread globally after Prince Albert of Saxe-Coburg (Queen Victoria's husband) introduced the decorated German Christmas tree to Britain in the 1840s. Images of the royal family around a decorated tree were published in the Illustrated London News in 1848 and promptly copied across Britain and America.</p><h3>Carol Singing</h3><p>Christmas carols began as circle dances accompanied by singing in medieval Europe. The tradition of singing at Christmas consolidated around the 13th century when St. Francis of Assisi introduced nativity plays (which included songs) to make the Christmas story accessible to ordinary people. "Silent Night" (Stille Nacht) — arguably the world's most famous carol — was composed on Christmas Eve 1818 in Oberndorf, Austria.</p><h2>Christmas Around the World</h2><p><strong>India:</strong> Churches are beautifully decorated; Christian communities celebrate mass at midnight; stars made from bamboo and paper are hung outside homes (particularly in Goa). <strong>Ethiopia:</strong> Genna, the Ethiopian Christmas, is celebrated on 7 January with a game resembling field hockey and a church ceremony at dawn. <strong>Philippines:</strong> Claims the world's longest Christmas season — celebrations begin in September with the "BER" months. <strong>Japan:</strong> A secular Christmas with KFC as the traditional Christmas meal — a marketing phenomenon that began in 1974.</p><h2>The Modern Festival</h2><p>Christmas today is simultaneously the world's most commercially significant holiday and a deeply personal religious observance. Global Christmas retail spending exceeds $1 trillion annually. The festival's universal themes — peace, generosity, family, and light in darkness — have made it resonate across cultures and faiths far beyond its Christian origins.</p>`},
+
+  {id:"navratri",name:"Navratri",emoji:"🪔",cat:"Hindu",color:"#c084fc",bg:"linear-gradient(135deg,#0d0020,#200030)",words:"~900",read:"4 min",
+  title:"Navratri — Nine Nights of the Goddess: History and Significance",
+  content:`<h2>What is Navratri?</h2><p>Navratri (Sanskrit: <em>nava</em> = nine, <em>ratri</em> = nights) is one of Hinduism's most important festivals, celebrating the divine feminine energy of the universe embodied in Goddess Durga and her nine forms (Navadurga). Observed four times a year according to the Hindu lunar calendar, the most prominent celebration — Sharada Navratri — falls in autumn (September–October) and culminates in Dussehra (Vijayadashami).</p><h2>Mythological Origins</h2><p>The central mythology involves the demon Mahishasura, who had obtained a boon of near-invincibility against all men and gods. The demon began terrorising the three worlds. The gods, powerless against him, pooled their divine energies to create Goddess Durga — a supreme warrior goddess blazing with the combined power of all deities. Over nine nights of fierce battle, Durga defeated Mahishasura on the tenth day (Dussehra), hence her name Mahishasuramardini (Slayer of Mahishasura).</p><div class="highlight-box"><strong>The Nine Forms:</strong> Shailputri, Brahmacharini, Chandraghanta, Kushmanda, Skandamata, Katyayani, Kalaratri, Mahagauri, and Siddhidatri — each form representing a different aspect of divine feminine power.</div><h2>Regional Celebrations</h2><p>In <strong>Gujarat</strong>, Navratri is the world's largest dance festival — the <em>Garba</em> and <em>Dandiya Raas</em> dances fill outdoor spaces nightly for nine days. Women wear the traditional <em>chaniya choli</em>, and communities gather for all-night celebrations. In <strong>West Bengal</strong>, the last five days are celebrated as Durga Puja — elaborate temporary temples (pandals) are constructed housing clay idols of Durga and her children, worshipped with music, art exhibitions, and community feasts before immersion in rivers on Dashami.</p><h2>Fasting and Worship</h2><p>Devotees observe strict fasting (vrat) during Navratri, consuming only fruits, dairy, and certain grains. The fast is believed to purify the body and mind, making the devotee receptive to the goddess's blessings. Special foods like <em>kuttu ka atta</em> (buckwheat flour), <em>singhare ki puri</em>, and <em>sabudana khichdi</em> are prepared.</p>`},
+
+  {id:"ganesh",name:"Ganesh Chaturthi",emoji:"🐘",cat:"Hindu",color:"#f5c518",bg:"linear-gradient(135deg,#100800,#201200)",words:"~850",read:"4 min",
+  title:"Ganesh Chaturthi — The Birth of Lord Ganesha: History & Tradition",
+  content:`<h2>What is Ganesh Chaturthi?</h2><p>Ganesh Chaturthi (also called Vinayaka Chaturthi) is an annual Hindu festival celebrating the birthday of Lord Ganesha — the elephant-headed son of Shiva and Parvati, and the god of beginnings, wisdom, and the remover of obstacles. Observed on the fourth day (Chaturthi) of the Hindu month Bhadrapada (August–September), it involves installing clay idols of Ganesha in homes and public pandals, followed by elaborate prayers over 1 to 11 days, culminating in a grand procession and immersion (visarjan) in water bodies.</p><h2>The Legend of Ganesha's Birth</h2><p>The most popular legend comes from the Shiva Purana. Goddess Parvati, while bathing, created a boy from the turmeric paste she applied to her body and breathed life into him, instructing him to guard her door. When Lord Shiva returned and was denied entry by this unknown boy, a furious altercation led Shiva to sever the boy's head. Parvati's grief was inconsolable. To restore life, Shiva sent his attendants to bring the head of the first creature they found facing north — an elephant. The elephant's head was placed on the boy's body, restoring his life. Shiva declared this boy his own son and blessed him as the foremost of all gods, to be worshipped before any other deity.</p><h2>The Public Celebration Tradition</h2><p>While domestic Ganesha worship has existed for centuries, the large-scale public celebration was given new life by Indian independence activist Bal Gangadhar Tilak in 1893 in Pune. Tilak transformed the private family festival into a large community event to unite Hindus against British colonial rule, as British laws prohibited large public gatherings. The festival became a platform for nationalist speeches, cultural programmes, and community solidarity. This tradition continues today — Pune's Ganesh Chaturthi remains among India's grandest festivals, and Mumbai's iconic Lalbaugcha Raja attracts millions of visitors annually.</p>`},
+
+  {id:"independence",name:"Independence Day",emoji:"🇮🇳",cat:"National",color:"#138808",bg:"linear-gradient(135deg,#001a00,#002200)",words:"~900",read:"4 min",
+  title:"India's Independence Day — 15 August 1947: The Story of Freedom",
+  content:`<h2>The Day India Became Free</h2><p>On the stroke of midnight between 14 and 15 August 1947, India's first Prime Minister Jawaharlal Nehru delivered his iconic "Tryst with Destiny" speech from the Central Hall of Parliament in New Delhi: <em>"At the stroke of the midnight hour, when the world sleeps, India will awake to life and freedom."</em> After nearly 200 years of British colonial rule, India became an independent nation — the largest democracy in the world.</p><h2>The Road to Independence</h2><p>The struggle for Indian independence spanned over a century. The First War of Independence (1857), the formation of the Indian National Congress (1885), the Non-Cooperation Movement (1920), the Civil Disobedience Movement (1930), the Quit India Movement (1942) — each represented a wave of resistance against colonial rule. The Salt March of 1930, in which Gandhi walked 240 miles to the sea to make salt in defiance of the British Salt Tax, became one of history's most famous acts of peaceful protest.</p><div class="highlight-box"><strong>Key fact:</strong> India was partitioned simultaneously into two nations — India and Pakistan — on 14–15 August 1947. The partition accompanied by religious violence led to one of the largest mass migrations in human history: approximately 14 million people crossing borders in both directions.</div><h2>Celebrations</h2><p>Every year on 15 August, the Prime Minister hoists the tricolour at the Red Fort in Delhi and delivers a national address. The flag — saffron for courage, white for peace and truth, and green for faith and chivalry, with the Ashoka Chakra (24-spoke wheel) in navy blue at its centre — flies from every government building, school, and millions of private homes. Kite flying is a popular Independence Day tradition, particularly in Gujarat. Patriotic songs, parades, cultural programmes, and the national anthem fill the day.</p>`},
+
+  {id:"newyear",name:"New Year's Day",emoji:"🎆",cat:"National",color:"#4d96ff",bg:"linear-gradient(135deg,#00030d,#000820)",words:"~850",read:"4 min",
+  title:"New Year's Day — The History Behind the World's Oldest Celebration",
+  content:`<h2>The World's Most Universal Festival</h2><p>New Year's Day — celebrated on 1 January in the Gregorian calendar — is the world's most universally observed holiday, marked by nearly every country on Earth. Yet the concept of a "New Year" is ancient, and its date has shifted dramatically across cultures and millennia.</p><h2>The Babylonian New Year</h2><p>The earliest recorded New Year celebration dates to ancient Babylon around 2000 BCE. The Babylonian New Year, called Akitu, was celebrated over 11 days at the spring equinox (late March). It involved religious rituals reaffirming the king's divine right to rule and the gods' victory over chaos.</p><h2>The Roman Calendar</h2><p>The Roman calendar originally began in March, making March 1 the New Year. In 46 BCE, Julius Caesar overhauled the Roman calendar — creating the Julian Calendar — and moved the New Year to 1 January, the date of the Roman god Janus (god of beginnings, doorways, and time, depicted with two faces looking forward and backward). The Gregorian calendar, introduced by Pope Gregory XIII in 1582 and now used worldwide, preserved this 1 January date.</p><div class="highlight-box"><strong>Did you know?</strong> India celebrates multiple New Years: the Gregorian 1 January, Ugadi (Telugu/Kannada New Year), Gudi Padwa (Marathi New Year), Vishu (Kerala), Puthandu (Tamil), Bohag Bihu (Assamese), and Losar (Tibetan).</div><h2>New Year's Traditions</h2><p>Fireworks and countdowns are the modern hallmark — Sydney, Dubai, London, New York, and Tokyo host world-famous displays. The tradition of making New Year's resolutions dates to the Babylonians, who made promises to their gods. "Auld Lang Syne" — the Scottish poem by Robert Burns set to a folk tune — has been sung at midnight since the 1800s. In India, the New Year is marked by national celebrations, television countdowns, parties, and the exchange of greetings across family WhatsApp groups at precisely midnight.</p>`},
+];
+
+/* ══ GREETING CARD TEMPLATES ══ */
+const cardTemplates=[
+  {name:"Diwali",emoji:"🪔",bg1:"#1a0800",bg2:"#3d1f00",accent:"#ff9d00",accent2:"#ff6b00",pattern:"diyas"},
+  {name:"Holi",emoji:"🌈",bg1:"#0d001a",bg2:"#1a003d",accent:"#ff3cac",accent2:"#00f2fe",pattern:"circles"},
+  {name:"Christmas",emoji:"🎄",bg1:"#001a0d",bg2:"#003322",accent:"#22c55e",accent2:"#ef4444",pattern:"snow"},
+  {name:"Eid",emoji:"🌙",bg1:"#0a0800",bg2:"#1a1200",accent:"#f5c518",accent2:"#ff9d00",pattern:"stars"},
+  {name:"New Year",emoji:"🎆",bg1:"#00030d",bg2:"#000820",accent:"#4d96ff",accent2:"#ff6bff",pattern:"burst"},
+  {name:"Navratri",emoji:"💫",bg1:"#0d0020",bg2:"#200030",accent:"#c084fc",accent2:"#f472b6",pattern:"circles"},
+  {name:"Republic Day",emoji:"🇮🇳",bg1:"#000a00",bg2:"#001a05",accent:"#ff9933",accent2:"#138808",pattern:"tricolour"},
+  {name:"Valentine",emoji:"❤️",bg1:"#1a0010",bg2:"#30001a",accent:"#ff1493",accent2:"#ff69b4",pattern:"hearts"},
+];
+
+/* ══ REFS ══ */
+const el={
+  greeting:document.getElementById("greeting"),clock:document.getElementById("clock"),
+  days:document.getElementById("days"),hours:document.getElementById("hours"),
+  minutes:document.getElementById("minutes"),seconds:document.getElementById("seconds"),
+  nextFestival:document.getElementById("nextFestival"),msg:document.getElementById("customMsg"),
+  userName:document.getElementById("userName"),toast:document.getElementById("toast"),
+  festList:document.getElementById("festivalList"),upcoming:document.getElementById("upcomingList"),
+  badge:document.getElementById("categoryBadge"),subGreeting:document.getElementById("subGreeting"),
+  charCount:document.getElementById("charCount"),calGrid:document.getElementById("calGrid"),
+  calMonth:document.getElementById("calMonth"),calTooltip:document.getElementById("calTooltip"),
+};
+let animationMode="subtle",activeFilter="All",calYear=new Date().getFullYear(),calMon=new Date().getMonth();
+let linkCount=parseInt(localStorage.getItem("lc")||0),shareCount=parseInt(localStorage.getItem("sc")||0);
+
+/* ══ HELPERS ══ */
+const pad=n=>String(n).padStart(2,"0");
+function todayStr(){const d=new Date();return`${pad(d.getMonth()+1)}-${pad(d.getDate())}`}
+function getTodayFestival(){return festivals.find(f=>f.date===todayStr())}
+function getNextFestival(){
+  const now=new Date();let next=null,minDiff=Infinity;
+  festivals.forEach(f=>{const[m,d]=f.date.split("-").map(Number);const fd=new Date(now.getFullYear(),m-1,d);if(fd<=now)fd.setFullYear(now.getFullYear()+1);const diff=fd-now;if(diff<minDiff){minDiff=diff;next={...f,full:fd}}});
+  return next;
+}
+function getUpcoming(n=6){const now=new Date();return festivals.map(f=>{const[m,d]=f.date.split("-").map(Number);const fd=new Date(now.getFullYear(),m-1,d);if(fd<=now)fd.setFullYear(now.getFullYear()+1);return{...f,full:fd,diff:fd-now}}).sort((a,b)=>a.diff-b.diff).slice(0,n)}
+function daysUntil(s){const now=new Date();const[m,d]=s.split("-").map(Number);const fd=new Date(now.getFullYear(),m-1,d);if(fd<=now)fd.setFullYear(now.getFullYear()+1);return Math.ceil((fd-now)/86400000)}
+function getRandMsg(f){if(!f.msg||!f.msg.length)return`🎉 Happy ${f.name}! ✨`;return f.msg[Math.floor(Math.random()*f.msg.length)]}
+function getUser(){return(el.userName.value||"").trim()}
+function showToast(m){el.toast.innerText=m;el.toast.classList.add("show");setTimeout(()=>el.toast.classList.remove("show"),2800)}
+
+/* ══ TAB NAVIGATION ══ */
+document.querySelectorAll(".nav-tab").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".nav-tab").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const tab=btn.dataset.tab;
+    document.querySelectorAll(".section-page").forEach(p=>p.classList.remove("active"));
+    document.getElementById("tab-"+tab).classList.add("active");
+    if(tab==="history")renderArticles();
+    if(tab==="cards")renderCards();
+    if(tab==="link")updateLinkStats();
+  });
+});
+
+/* ══ CLOCK ══ */
+function updateClock(){el.clock.innerText=new Date().toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:true})}
+setInterval(updateClock,1000);updateClock();
+
+/* ══ UI / COUNTDOWN ══ */
+function updateUI(){
+  const f=getTodayFestival();
+  if(f){el.greeting.innerText=`${f.emoji} Happy ${f.name}!`;el.badge.innerText=`🎉 ${f.cat} — Today!`;el.subGreeting.innerText=getRandMsg(f);triggerFestBg(f.name);triggerAnimation()}
+  else{const next=getNextFestival();el.greeting.innerText="✨ Have a Wonderful Day!";el.badge.innerText=`🗓 Next: ${next?next.name:"Festival"} soon`;el.subGreeting.innerText=next?`${next.emoji} ${next.name} is coming up!`:"";clearBgFx()}
+}
+function updateCountdown(){
+  const n=getNextFestival();if(!n)return;const diff=n.full-new Date();if(diff<=0)return;
+  el.days.innerText=pad(Math.floor(diff/86400000));el.hours.innerText=pad(Math.floor((diff/3600000)%24));
+  el.minutes.innerText=pad(Math.floor((diff/60000)%60));el.seconds.innerText=pad(Math.floor((diff/1000)%60));
+  el.nextFestival.innerText=`🗓 Counting down to ${n.emoji} ${n.name}`;
+}
+
+/* ══ THEME / ANIMATION ══ */
+document.getElementById("themeSelect").addEventListener("change",e=>document.body.className=e.target.value);
+document.getElementById("animationSelect").addEventListener("change",e=>animationMode=e.target.value);
+function triggerAnimation(){const cls=animationMode==="balanced"?"pulse":animationMode==="subtle"?"glow":null;if(cls){el.greeting.classList.add(cls);setTimeout(()=>el.greeting.classList.remove(cls),1300)}if(animationMode==="festive")spawnConfetti()}
+function spawnConfetti(){const colors=["#ff5f57","#ff8c42","#bf5fff","#38bdf8","#34d399","#f472b6","#fbbf24"];for(let i=0;i<50;i++){const c=document.createElement("div");c.className="confetti";c.style.cssText=`left:${Math.random()*100}vw;width:${Math.random()*8+4}px;height:${Math.random()*8+4}px;background:${colors[Math.floor(Math.random()*colors.length)]};border-radius:${Math.random()>.5?"50%":"2px"};animation-duration:${Math.random()*2.5+2.5}s;animation-delay:${Math.random()*.8}s`;document.body.appendChild(c);setTimeout(()=>c.remove(),5000)}}
+
+/* ══ FESTIVAL LIST ══ */
+function renderFestivalList(filter="All"){
+  const today=todayStr();const list=filter==="All"?festivals:festivals.filter(f=>f.cat===filter);
+  el.festList.innerHTML=list.map(f=>{
+    const isToday=f.date===today;const days=daysUntil(f.date);
+    const art=articles.find(a=>a.name===f.name||f.name.includes(a.name)||a.name.includes(f.name));
+    return`<div class="fest-item ${isToday?"today":""}" onclick="loadFestivalMsg('${f.name.replace(/'/g,"\\'")}')">
+      <div class="fest-left"><span class="fest-emoji">${f.emoji}</span><div><div class="fest-name">${f.name}</div><div class="fest-cat">${f.cat}</div></div></div>
+      <div style="display:flex;align-items:center;gap:8px">
+        ${isToday?'<span class="fest-today-tag">TODAY</span>':`<span class="fest-date">${days}d</span>`}
+        ${art?`<button class="fest-read-btn" onclick="event.stopPropagation();openArticle('${art.id}')">Read</button>`:""}
+      </div>
+    </div>`;
+  }).join("");
+}
+function loadFestivalMsg(name){
+  const f=festivals.find(f=>f.name===name);if(!f)return;
+  const uname=getUser();let msg=getRandMsg(f);if(uname)msg+=`\n\n— ${uname}`;
+  el.msg.value=msg;updateCharCount();
+  document.querySelector('[data-tab="home"]')?.click();
+  el.msg.scrollIntoView({behavior:"smooth",block:"center"});showToast(`✅ ${f.emoji} ${f.name} loaded`);
+}
+document.getElementById("filterTabs").addEventListener("click",e=>{
+  const btn=e.target.closest(".tab");if(!btn)return;
+  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));btn.classList.add("active");
+  activeFilter=btn.dataset.cat;renderFestivalList(activeFilter);
+});
+
+/* ══ UPCOMING ══ */
+function renderUpcoming(){
+  el.upcoming.innerHTML=getUpcoming(6).map(f=>{const days=Math.ceil(f.diff/86400000);return`<div class="upcoming-item" onclick="loadFestivalMsg('${f.name.replace(/'/g,"\\'")}')"><div class="upcoming-days">${days}<span>days</span></div><div class="upcoming-info"><div class="upcoming-name">${f.emoji} ${f.name}</div><div class="upcoming-date">${f.cat}</div></div></div>`}).join("");
+}
+
+/* ══ CALENDAR ══ */
+function renderCalendar(){
+  const today=new Date();const first=new Date(calYear,calMon,1);const last=new Date(calYear,calMon+1,0);
+  const months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+  el.calMonth.textContent=`${months[calMon]} ${calYear}`;
+  const ms=pad(calMon+1);const festMap={};
+  festivals.forEach(f=>{if(f.date.startsWith(ms+"-")){const d=parseInt(f.date.split("-")[1]);if(!festMap[d])festMap[d]=[];festMap[d].push(f)}});
+  let html="";for(let i=0;i<first.getDay();i++)html+=`<div class="cal-day empty"></div>`;
+  for(let d=1;d<=last.getDate();d++){
+    const isTd=d===today.getDate()&&calMon===today.getMonth()&&calYear===today.getFullYear();
+    const hF=!!festMap[d];const fns=hF?festMap[d].map(f=>`${f.emoji} ${f.name}`).join(", "):"";
+    html+=`<div class="${["cal-day",isTd?"today":"",hF?"has-fest":""].filter(Boolean).join(" ")}" onmouseenter="showCalTip(event,'${fns.replace(/'/g,"\\'")}')" onmouseleave="hideCalTip()" onclick="handleCalClick(${d})">${d}</div>`;
+  }
+  el.calGrid.innerHTML=html;
+}
+function changeMonth(dir){calMon+=dir;if(calMon>11){calMon=0;calYear++}if(calMon<0){calMon=11;calYear--}renderCalendar()}
+function showCalTip(e,fests){if(!fests)return;const t=el.calTooltip;t.textContent=fests;t.classList.add("show");const r=e.target.getBoundingClientRect();t.style.left=`${r.left+r.width/2-60}px`;t.style.top=`${r.top-40}px`}
+function hideCalTip(){el.calTooltip.classList.remove("show")}
+function handleCalClick(d){const ms2=pad(calMon+1);const ds=`${ms2}-${pad(d)}`;const f=festivals.find(f=>f.date===ds);if(f)loadFestivalMsg(f.name)}
+
+/* ══ MESSAGE ══ */
+function setTemplate(type){
+  const f=getTodayFestival(),next=getNextFestival();const name=f?f.name:(next?next.name:"the occasion");const emoji=f?f.emoji:(next?next.emoji:"🎉");
+  const sig=getUser()?`\n\n— ${getUser()}`:"";
+  const t={formal:`Dear friends and family,\n\nOn the auspicious occasion of ${name}, I extend my warmest wishes to you and your loved ones. May this celebration bring peace, joy, and prosperity.\n\nWith warm regards ${emoji}${sig}`,fun:`YOOOO it's ${name}!! ${emoji}🎊🥳 Let's PARTY!! 🎉🎈${sig}`,short:`${emoji} Happy ${name}! Wishing you joy today! ✨${sig}`};
+  el.msg.value=t[type]||t.short;updateCharCount();
+}
+el.userName.addEventListener("input",()=>{if(!el.msg.value.trim())autoFill()});
+function updateCharCount(){const l=el.msg.value.length;el.charCount.innerText=`${l} / 280`;el.charCount.style.color=l>260?"var(--accent)":"var(--muted)"}
+el.msg.addEventListener("input",updateCharCount);
+function autoFill(){const f=getTodayFestival(),next=getNextFestival();const sig=getUser()?`\n\n— ${getUser()}`:"";if(f)el.msg.value=getRandMsg(f)+sig;else if(next){const d=Math.ceil((next.full-new Date())/86400000);el.msg.value=`${next.emoji} ${next.name} is just ${d} day${d>1?"s":""} away! Get ready to celebrate! 🎉\n\nWishing everyone a wonderful ${next.name}! ✨${sig}`}updateCharCount()}
+
+/* ══ SHARE ══ */
+function buildMsg(){const f=getTodayFestival(),next=getNextFestival();const sig=getUser()?`\n\n— ${getUser()}`:"";const name=f?`${f.emoji} ${f.name}`:(next?`${next.emoji} ${next.name}`:"this occasion");const u=el.msg.value.trim();return(u||`🎉 Happy ${name}! ✨${sig}`)+`\n\n🌐 ${window.location.href}`}
+function shareMessage(){const t=buildMsg();if(navigator.share)navigator.share({title:"Festival Greetings",text:t,url:window.location.href});else window.open(`https://wa.me/?text=${encodeURIComponent(t)}`);trackShare()}
+function shareWhatsApp(){window.open(`https://wa.me/?text=${encodeURIComponent(buildMsg())}`);trackShare()}
+function shareFacebook(){window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`)}
+function shareTwitter(){window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(buildMsg())}`);trackShare()}
+function copyMsg(){navigator.clipboard.writeText(buildMsg()).then(()=>showToast("✅ Message copied!")).catch(()=>showToast("⚠️ Copy failed"))}
+function trackShare(){shareCount++;try{localStorage.setItem("sc",shareCount)}catch(e){}updateLinkStats()}
+
+/* ══ HISTORY ARTICLES ══ */
+function renderArticles(q=""){
+  const grid=document.getElementById("articleGrid");
+  const list=q?articles.filter(a=>a.title.toLowerCase().includes(q.toLowerCase())||a.name.toLowerCase().includes(q.toLowerCase())):articles;
+  grid.innerHTML=list.map(a=>`
+    <div class="article-card" onclick="openArticle('${a.id}')">
+      <div class="article-banner" style="background:${a.bg}"><span style="filter:drop-shadow(0 0 20px ${a.color})">${a.emoji}</span></div>
+      <div class="article-body">
+        <div class="article-meta"><span class="article-tag">${a.cat}</span><span>📖 ${a.words} words</span><span>⏱ ${a.read} read</span></div>
+        <div class="article-title">${a.title}</div>
+        <div class="article-preview">${a.content.replace(/<[^>]+>/g,"").substring(0,120)}...</div>
+      </div>
+    </div>`).join("");
+}
+function filterArticles(){renderArticles(document.getElementById("historySearch").value)}
+
+function openArticle(id){
+  const a=articles.find(a=>a.id===id);if(!a)return;
+  document.getElementById("modalHero").style.background=a.bg;
+  document.getElementById("modalHero").innerHTML=`<span style="font-size:5rem;filter:drop-shadow(0 0 30px ${a.color})">${a.emoji}</span>`;
+  document.getElementById("modalTitle").textContent=a.title;
+  document.getElementById("modalMeta").innerHTML=`<span>📂 ${a.cat}</span><span>📖 ${a.words}</span><span>⏱ ${a.read} read</span>`;
+  document.getElementById("modalBody").innerHTML=a.content;
+  document.getElementById("articleModal").classList.add("open");
+  document.body.style.overflow="hidden";
+}
+function closeModal(){document.getElementById("articleModal").classList.remove("open");document.body.style.overflow=""}
+document.getElementById("articleModal").addEventListener("click",e=>{if(e.target===document.getElementById("articleModal"))closeModal()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+
+/* ══ GREETING CARDS ══ */
+let activeCardFilter="All";
+function renderCards(){
+  const filterEl=document.getElementById("cardsFilter");
+  const cats=["All",...new Set(cardTemplates.map(c=>c.name))];
+  filterEl.innerHTML=cats.map(c=>`<button class="tab ${c===activeCardFilter?"active":""}" onclick="setCardFilter('${c}')">${c}</button>`).join("");
+  const name=document.getElementById("cardName").value.trim()||"Your Name";
+  const list=activeCardFilter==="All"?cardTemplates:cardTemplates.filter(c=>c.name===activeCardFilter);
+  document.getElementById("cardGrid").innerHTML=list.map((t,i)=>`
+    <div class="greeting-card" style="border-color:${t.accent}">
+      <canvas class="gc-canvas" id="gc-${i}" width="480" height="360"></canvas>
+      <div class="gc-footer"><span class="gc-name">${t.name}</span><button class="gc-dl" onclick="downloadCard(${i},'${t.name}')">⬇ Download</button></div>
+    </div>`).join("");
+  list.forEach((t,i)=>setTimeout(()=>drawCard(i,t,name),50));
+}
+function setCardFilter(cat){activeCardFilter=cat;renderCards()}
+function drawCard(idx,tpl,name){
+  const canvas=document.getElementById(`gc-${idx}`);if(!canvas)return;
+  const c=canvas.getContext("2d");const W=480,H=360;
+  const g=c.createLinearGradient(0,0,W,H);g.addColorStop(0,tpl.bg1);g.addColorStop(1,tpl.bg2);
+  c.fillStyle=g;c.fillRect(0,0,W,H);
+  // Decorative pattern
+  if(tpl.pattern==="circles"){for(let i=0;i<8;i++){c.beginPath();c.arc(Math.random()*W,Math.random()*H,Math.random()*40+10,0,Math.PI*2);c.fillStyle=tpl.accent+(Math.floor(Math.random()*40+10).toString(16));c.fill()}}
+  if(tpl.pattern==="stars"){for(let i=0;i<20;i++){c.font=`${Math.random()*20+10}px sans-serif`;c.fillStyle=tpl.accent;c.fillText("★",Math.random()*W,Math.random()*H)}}
+  if(tpl.pattern==="snow"){for(let i=0;i<25;i++){c.font=`${Math.random()*16+8}px sans-serif`;c.fillStyle="rgba(255,255,255,0.7)";c.fillText("❄",Math.random()*W,Math.random()*H)}}
+  if(tpl.pattern==="burst"){for(let i=0;i<40;i++){const a=Math.random()*Math.PI*2,r=Math.random()*160+20;c.beginPath();c.arc(W/2+Math.cos(a)*r,H/2+Math.sin(a)*r,Math.random()*4+1,0,Math.PI*2);c.fillStyle=tpl.accent;c.fill()}}
+  if(tpl.pattern==="hearts"){for(let i=0;i<12;i++){c.font=`${Math.random()*24+12}px sans-serif`;c.fillText("❤️",Math.random()*W,Math.random()*H)}}
+  if(tpl.pattern==="tricolour"){c.fillStyle="#ff9933";c.fillRect(0,0,W,H/3);c.fillStyle="#ffffff";c.fillRect(0,H/3,W,H/3);c.fillStyle="#138808";c.fillRect(0,2*H/3,W,H/3);c.fillStyle="rgba(0,0,0,0.4)";c.fillRect(0,0,W,H)}
+  if(tpl.pattern==="diyas"){for(let i=0;i<8;i++){c.font=`${Math.random()*24+14}px sans-serif`;c.fillText("🪔",Math.random()*W*0.8+W*0.1,Math.random()*H*0.7+H*0.2)}}
+  // Glow circle
+  const gr=c.createRadialGradient(W/2,H/2,0,W/2,H/2,180);gr.addColorStop(0,tpl.accent+"55");gr.addColorStop(1,"transparent");c.fillStyle=gr;c.fillRect(0,0,W,H);
+  // Emoji
+  c.font="72px sans-serif";c.textAlign="center";c.shadowColor=tpl.accent;c.shadowBlur=30;c.fillText(tpl.emoji,W/2,H/2-20);c.shadowBlur=0;
+  // Festival name
+  c.font="bold 28px 'Plus Jakarta Sans',sans-serif";c.fillStyle=tpl.accent;c.textAlign="center";c.shadowColor=tpl.accent;c.shadowBlur=15;
+  c.fillText(`Happy ${tpl.name}!`,W/2,H/2+55);c.shadowBlur=0;
+  // User name
+  if(name&&name!=="Your Name"){c.font="16px 'Plus Jakarta Sans',sans-serif";c.fillStyle="rgba(255,255,255,0.7)";c.fillText(`— ${name}`,W/2,H/2+88)}
+  // Border
+  c.strokeStyle=tpl.accent;c.lineWidth=3;c.strokeRect(8,8,W-16,H-16);
+}
+function downloadCard(idx,name){
+  const canvas=document.getElementById(`gc-${idx}`);if(!canvas)return;
+  const a=document.createElement("a");a.download=`${name.replace(/\s/g,"-")}-greeting-FestivCount.png`;a.href=canvas.toDataURL("image/png");a.click();showToast(`✅ Card downloaded!`);trackShare()}
+
+/* ══ CUSTOM LINK GENERATOR ══ */
+function populateLinkFest(){
+  const sel=document.getElementById("linkFest");
+  sel.innerHTML=festivals.map(f=>`<option value="${f.name}">${f.emoji} ${f.name}</option>`).join("");
+  const tf=getTodayFestival()||getNextFestival();if(tf)sel.value=tf.name;
+}
+let generatedLink="";
+function generateLink(){
+  const name=document.getElementById("linkName").value.trim();
+  const msg=document.getElementById("linkMsg").value.trim();
+  const fest=document.getElementById("linkFest").value;
+  const theme=document.getElementById("linkTheme").value;
+  if(!name){showToast("⚠️ Please enter your name");return}
+  const params=new URLSearchParams({from:name,msg:msg||"",fest:fest,theme:theme});
+  generatedLink=`${window.location.href.split("?")[0]}?${params.toString()}`;
+  document.getElementById("linkUrl").textContent=generatedLink;
+  const f=festivals.find(f=>f.name===fest)||{emoji:"🎉",msg:["Wishing you joy!"]};
+  const preview=msg||getRandMsg(f);
+  document.getElementById("linkPreview").innerHTML=`<p><strong>✉️ Preview:</strong><br><br>${f.emoji} <strong>${name}</strong> is wishing you:<br><em>"${preview}"</em><br><br>This link will open FestivCount with this personalised message.</p>`;
+  document.getElementById("linkResult").classList.add("show");
+  linkCount++;try{localStorage.setItem("lc",linkCount)}catch(e){}
+  updateLinkStats();showToast("✅ Your personalised link is ready!");
+}
+function copyGeneratedLink(){navigator.clipboard.writeText(generatedLink).then(()=>showToast("✅ Link copied!")).catch(()=>showToast("⚠️ Copy failed"))}
+function shareGenWA(){if(generatedLink)window.open(`https://wa.me/?text=${encodeURIComponent("🎉 "+document.getElementById("linkFest").value+" greetings from "+document.getElementById("linkName").value+"!\n\n"+generatedLink)}`);trackShare()}
+function shareGenTW(){if(generatedLink)window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent("🎉 Happy "+document.getElementById("linkFest").value+"! "+generatedLink)}`);trackShare()}
+function updateLinkStats(){document.getElementById("statLinks").textContent=linkCount;document.getElementById("statShares").textContent=shareCount}
+
+/* ══ READ URL PARAMS (when someone opens a shared link) ══ */
+function readURLParams(){
+  const p=new URLSearchParams(window.location.search);
+  if(p.get("from")){
+    const from=p.get("from");const msg=p.get("msg");const fest=p.get("fest");const theme=p.get("theme");
+    if(theme)document.body.className=theme;
+    const f=festivals.find(f=>f.name===fest);
+    const greeting=msg||(f?getRandMsg(f):`🎉 Happy ${fest||"Festival"}!`);
+    showToast(`🎉 ${from} sent you a greeting!`);
+    setTimeout(()=>{
+      el.msg.value=`${greeting}\n\n— ${from}`;updateCharCount();
+      if(f){el.greeting.innerText=`${f.emoji} ${from} wishes you:\nHappy ${f.name}!`;triggerFestBg(f.name||"default");spawnConfetti()}
+    },600);
+  }
+}
+
+/* ══ API MERGE ══ */
+async function fetchAndMerge(country="IN"){
+  try{const res=await fetch(`https://date.nager.at/api/v3/PublicHolidays/${new Date().getFullYear()}/${country}`);if(!res.ok)return;const data=await res.json();data.forEach(e=>{const date=e.date.slice(5);if(!festivals.some(f=>f.date===date&&f.cat==="National"))festivals.push({name:e.localName||e.name,date,emoji:"🗓",cat:"National",msg:[`🗓 Happy ${e.localName||e.name}! 🎉`]})});renderFestivalList(activeFilter);renderUpcoming();renderCalendar()}catch(e){}
+}
+document.getElementById("countrySelect").addEventListener("change",e=>fetchAndMerge(e.target.value));
+
+/* ══ INIT ══ */
+async function init(){
+  updateUI();updateCountdown();autoFill();
+  renderFestivalList("All");renderUpcoming();renderCalendar();
+  populateLinkFest();readURLParams();updateLinkStats();
+  await fetchAndMerge("IN");
+  setInterval(updateUI,60000);setInterval(updateCountdown,1000);
+}
+init();
+</script>
+</body>
+</html>
